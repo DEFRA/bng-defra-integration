@@ -1,0 +1,144 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "actions": {
+      "Initialize_response_code": {
+        "inputs": {
+          "variables": [
+            {
+              "name": "responseCode",
+              "type": "integer",
+              "value": 503
+            }
+          ]
+        },
+        "runAfter": {},
+        "type": "InitializeVariable"
+      },
+      "Response": {
+        "inputs": {
+          "statusCode": "@variables('responseCode')"
+        },
+        "kind": "Http",
+        "runAfter": {
+          "Try": ["SUCCEEDED", "TIMEDOUT", "SKIPPED", "FAILED"]
+        },
+        "type": "Response"
+      },
+      "Try": {  
+        "actions": {
+          "Add_public_register_document_to_storage": {
+            "inputs": {
+              "body": "@body('Get_file_content_using_path')",
+              "headers": {
+                "ReadFileMetadataFromServer": true
+              },
+              "host": {
+                "connection": {
+                  "referenceName": "azureblob"
+                }
+              },
+              "method": "post",
+              "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent(parameters('publicRegisterBlobStorage')))}/files",
+              "queries": {
+                "folderPath": "public-documents",
+                "name": "@triggerBody()?['blobname']",
+                "queryParametersSingleEncoded": true
+              }
+            },
+            "runAfter": {
+              "Delete_public_register_document_from_storage": [
+                "SUCCEEDED",
+                "FAILED",
+                "TIMEDOUT"
+              ]
+            },
+            "runtimeConfiguration": {
+              "contentTransfer": {
+                "transferMode": "Chunked"
+              }
+            },
+            "type": "ApiConnection"
+          },
+          "Delete_public_register_document_from_storage": {
+            "inputs": {
+              "headers": {
+                "SkipDeleteIfFileNotFoundOnServer": false
+              },
+              "host": {
+                "connection": {
+                  "referenceName": "azureblob"
+                }
+              },
+              "method": "delete",
+              "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent(parameters('publicRegisterBlobStorage')))}/files/@{encodeURIComponent(encodeURIComponent('public-documents/',triggerBody()?['oldlandboundary']))}"
+            },
+            "runAfter": {
+              "Get_file_content_using_path": ["SUCCEEDED"]
+            },
+            "type": "ApiConnection"
+          },
+          "Get_file_content_using_path": {
+            "inputs": {
+              "host": {
+                "connection": {
+                  "referenceName": "sharepointonline"
+                }
+              },
+              "method": "get",
+              "path": "/datasets/@{encodeURIComponent(encodeURIComponent(parameters('bngSharePointUrl')))}/GetFileContentByPath",
+              "queries": {
+                "inferContentType": true,
+                "path": "@triggerBody()?['sharepointurl']",
+                "queryParametersSingleEncoded": true
+              }
+            },
+            "type": "ApiConnection"
+          },
+          "Set_response_code": {
+            "inputs": {
+              "name": "responseCode",
+              "value": 200
+            },
+            "runAfter": {
+              "Add_public_register_document_to_storage": ["SUCCEEDED"]
+            },
+            "type": "SetVariable"
+          }
+        },
+        "runAfter": {
+          "Initialize_response_code": ["SUCCEEDED"]
+        },
+        "type": "Scope"
+      }
+    },
+    "contentVersion": "1.0.0.0",
+    "outputs": {},
+    "triggers": {
+      "When_a_HTTP_request_is_received": {
+        "inputs": {
+          "schema": {
+            "properties": {
+              "blobname": {
+                "type": "string"
+              },
+              "oldlandboundary": {
+                "type": "string"
+              },
+              "gainsiteid": {
+                "type": "string"
+              },
+              "sharepointurl": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "kind": "Http",
+        "type": "Request"
+      }
+    }
+  },
+  "kind": "Stateful"
+}

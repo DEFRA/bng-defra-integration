@@ -1,0 +1,302 @@
+{
+  "BusinessUnitId": "64026cfe-999b-ee11-be37-000d3a875b5f",
+  "CorrelationId": "18a0dee1-85d0-4fbd-9e3e-4b1b7c83eca4",
+  "Depth": 1,
+  "InitiatingUserAgent": "azure-logic-apps\/1.0 (workflow d48c332f6f534df49653b12f1d47bf7a; version 08584915068801731733) microsoft-flow\/1.0",
+  "InitiatingUserAzureActiveDirectoryObjectId": "7e46669b-c45b-414c-b70e-e0235ce7be34",
+  "InitiatingUserId": "b2d5bfd4-63a9-ee11-be37-0022480040a6",
+  "InputParameters": [
+    {
+      "key": "Target",
+      "value": {
+        "__type": "Entity:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts",
+        "Attributes": [
+          {
+            "key": "bng_actiontype",
+            "value": {
+              "__type": "OptionSetValue:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts",
+              "Value": 759150010
+            }
+          },
+          {
+            "key": "activityid",
+            "value": "373dc92d-1fdf-ee11-904d-000d3a86c43e"
+          },
+          {
+            "key": "modifiedon",
+            "value": "\/Date(1710103553000)\/"
+          },
+          {
+            "key": "modifiedby",
+            "value": {
+              "__type": "EntityReference:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts",
+              "Id": "b2d5bfd4-63a9-ee11-be37-0022480040a6",
+              "KeyAttributes": [],
+              "LogicalName": "systemuser",
+              "Name": null,
+              "RowVersion": null
+            }
+          },
+          {
+            "key": "modifiedonbehalfby",
+            "value": null
+          }
+        ],
+        "EntityState": null,
+        "FormattedValues": [],
+        "Id": "373dc92d-1fdf-ee11-904d-000d3a86c43e",
+        "KeyAttributes": [],
+        "LogicalName": "bng_notify",
+        "RelatedEntities": [],
+        "RowVersion": "9304829"
+      }
+    }
+  ],
+  "IsExecutingOffline": false,
+  "IsInTransaction": false,
+  "IsOfflinePlayback": false,
+  "IsolationMode": 1,
+  "MessageName": "Update",
+  "Mode": 1,
+  "OperationCreatedOn": "\/Date(1710103553000+0000)\/",
+  "OperationId": "28fb2a2b-1fdf-ee11-904c-002248c705af",
+  "OrganizationId": "a810fbe5-5fa9-ee11-be32-6045bdd202ab",
+  "OrganizationName": "unqa810fbe55fa9ee11be326045bdd20",
+  "OutputParameters": [],
+  "OwningExtension": {
+    "Id": "8ac6263b-de60-ed11-9562-000d3a875dd4",
+    "KeyAttributes": [],
+    "LogicalName": "sdkmessageprocessingstep",
+    "Name": null,
+    "RowVersion": null
+  },
+  "ParentContext": {
+    "BusinessUnitId": "64026cfe-999b-ee11-be37-000d3a875b5f",
+    "CorrelationId": "18a0dee1-85d0-4fbd-9e3e-4b1b7c83eca4",
+    "Depth": 1,
+    "InitiatingUserAgent": "azure-logic-apps\/1.0 (workflow d48c332f6f534df49653b12f1d47bf7a; version 08584915068801731733) microsoft-flow\/1.0",
+    "InitiatingUserAzureActiveDirectoryObjectId": "7e46669b-c45b-414c-b70e-e0235ce7be34",
+    "InitiatingUserId": "b2d5bfd4-63a9-ee11-be37-0022480040a6",
+    "InputParameters": [
+      {
+        "key": "Target",
+        "value": {
+          "__type": "Entity:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts",
+          "Attributes": [
+            {
+              "key": "bng_actiontype",
+              "value": {
+                "__type": "OptionSetValue:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts",
+                "Value": 759150010
+              }
+            },
+            {
+              "key": "activityid",
+              "value": "373dc92d-1fdf-ee11-904d-000d3a86c43e"
+            }
+          ],
+          "EntityState": null,
+          "FormattedValues": [],
+          "Id": "373dc92d-1fdf-ee11-904d-000d3a86c43e",
+          "KeyAttributes": [],
+          "LogicalName": "bng_notify",
+          "RelatedEntities": [],
+          "RowVersion": null
+        }
+      }
+    ],
+    "IsExecutingOffline": false,
+    "IsInTransaction": false,
+    "IsOfflinePlayback": false,
+    "IsolationMode": 1,
+    "MessageName": "Update",
+    "Mode": 1,
+    "OperationCreatedOn": "\/Date(1710103553000+0000)\/",
+    "OperationId": "28fb2a2b-1fdf-ee11-904c-002248c705af",
+    "OrganizationId": "a810fbe5-5fa9-ee11-be32-6045bdd202ab",
+    "OrganizationName": "unqa810fbe55fa9ee11be326045bdd20",
+    "OutputParameters": [],
+    "OwningExtension": {
+      "Id": "8ac6263b-de60-ed11-9562-000d3a875dd4",
+      "KeyAttributes": [],
+      "LogicalName": "sdkmessageprocessingstep",
+      "Name": null,
+      "RowVersion": null
+    },
+    "ParentContext": {
+      "BusinessUnitId": "64026cfe-999b-ee11-be37-000d3a875b5f",
+      "CorrelationId": "18a0dee1-85d0-4fbd-9e3e-4b1b7c83eca4",
+      "Depth": 1,
+      "InitiatingUserAgent": "azure-logic-apps\/1.0 (workflow d48c332f6f534df49653b12f1d47bf7a; version 08584915068801731733) microsoft-flow\/1.0",
+      "InitiatingUserAzureActiveDirectoryObjectId": "7e46669b-c45b-414c-b70e-e0235ce7be34",
+      "InitiatingUserId": "b2d5bfd4-63a9-ee11-be37-0022480040a6",
+      "InputParameters": [
+        {
+          "key": "Target",
+          "value": {
+            "__type": "Entity:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts",
+            "Attributes": [
+              {
+                "key": "bng_actiontype",
+                "value": {
+                  "__type": "OptionSetValue:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts",
+                  "Value": 759150010
+                }
+              },
+              {
+                "key": "activityid",
+                "value": "373dc92d-1fdf-ee11-904d-000d3a86c43e"
+              }
+            ],
+            "EntityState": null,
+            "FormattedValues": [],
+            "Id": "373dc92d-1fdf-ee11-904d-000d3a86c43e",
+            "KeyAttributes": [],
+            "LogicalName": "bng_notify",
+            "RelatedEntities": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "key": "ReturnRowVersion",
+          "value": null
+        },
+        {
+          "key": "ReturnRepresentationColumnSet",
+          "value": {
+            "__type": "ColumnSet:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts",
+            "AllColumns": false,
+            "AttributeExpressions": [],
+            "Columns": [ "activityadditionalparams", "activityid", "activitytypecode", "actualdurationminutes", "actualend", "actualstart", "bng_account", "bng_actiontype", "bng_applicantid", "bng_externalnotifyid", "bng_retrycount", "community", "createdby", "createdon", "createdonbehalfby", "deliverylastattemptedon", "deliveryprioritycode", "description", "exchangeitemid", "exchangerate", "exchangeweblink", "importsequencenumber", "instancetypecode", "isbilled", "ismapiprivate", "isregularactivity", "isworkflowcreated", "lastonholdtime", "leftvoicemail", "modifiedby", "modifiedon", "modifiedonbehalfby", "onholdtime", "overriddencreatedon", "ownerid", "owningbusinessunit", "owningteam", "owninguser", "postponeactivityprocessinguntil", "prioritycode", "processid", "regardingobjectid", "scheduleddurationminutes", "scheduledend", "scheduledstart", "sendermailboxid", "senton", "seriesid", "serviceid", "slaid", "slainvokedid", "sortdate", "stageid", "statecode", "statuscode", "subject", "timezoneruleversionnumber", "transactioncurrencyid", "traversedpath", "utcconversiontimezonecode", "versionnumber" ]
+          }
+        },
+        {
+          "key": "ReturnRepresentationRelationshipQueryCollection",
+          "value": []
+        }
+      ],
+      "IsExecutingOffline": false,
+      "IsInTransaction": false,
+      "IsOfflinePlayback": false,
+      "IsolationMode": 1,
+      "MessageName": "Update",
+      "Mode": 1,
+      "OperationCreatedOn": "\/Date(1710103553000+0000)\/",
+      "OperationId": "28fb2a2b-1fdf-ee11-904c-002248c705af",
+      "OrganizationId": "a810fbe5-5fa9-ee11-be32-6045bdd202ab",
+      "OrganizationName": "unqa810fbe55fa9ee11be326045bdd20",
+      "OutputParameters": [],
+      "OwningExtension": {
+        "Id": "8ac6263b-de60-ed11-9562-000d3a875dd4",
+        "KeyAttributes": [],
+        "LogicalName": "sdkmessageprocessingstep",
+        "Name": null,
+        "RowVersion": null
+      },
+      "ParentContext": null,
+      "PostEntityImages": [],
+      "PreEntityImages": [],
+      "PrimaryEntityId": "373dc92d-1fdf-ee11-904d-000d3a86c43e",
+      "PrimaryEntityName": "none",
+      "RequestId": "449b0629-75b5-4c3e-b5c6-fd83c8378b10",
+      "SecondaryEntityName": "none",
+      "SharedVariables": [
+        {
+          "key": "ReturnRepresentationColumnSet",
+          "value": {
+            "__type": "ColumnSet:http:\/\/schemas.microsoft.com\/xrm\/2011\/Contracts",
+            "AllColumns": false,
+            "AttributeExpressions": [],
+            "Columns": [ "activityadditionalparams", "activityid", "activitytypecode", "actualdurationminutes", "actualend", "actualstart", "bng_account", "bng_actiontype", "bng_applicantid", "bng_externalnotifyid", "bng_retrycount", "community", "createdby", "createdon", "createdonbehalfby", "deliverylastattemptedon", "deliveryprioritycode", "description", "exchangeitemid", "exchangerate", "exchangeweblink", "importsequencenumber", "instancetypecode", "isbilled", "ismapiprivate", "isregularactivity", "isworkflowcreated", "lastonholdtime", "leftvoicemail", "modifiedby", "modifiedon", "modifiedonbehalfby", "onholdtime", "overriddencreatedon", "ownerid", "owningbusinessunit", "owningteam", "owninguser", "postponeactivityprocessinguntil", "prioritycode", "processid", "regardingobjectid", "scheduleddurationminutes", "scheduledend", "scheduledstart", "sendermailboxid", "senton", "seriesid", "serviceid", "slaid", "slainvokedid", "sortdate", "stageid", "statecode", "statuscode", "subject", "timezoneruleversionnumber", "transactioncurrencyid", "traversedpath", "utcconversiontimezonecode", "versionnumber" ]
+          }
+        },
+        {
+          "key": "ReturnRepresentationRelationshipQueryCollection",
+          "value": []
+        },
+        {
+          "key": "IsAutoTransact",
+          "value": false
+        },
+        {
+          "key": "AcceptLang",
+          "value": "en-US"
+        },
+        {
+          "key": "ChangedEntityTypes",
+          "value": [
+            {
+              "__type": "KeyValuePairOfstringstring:#System.Collections.Generic",
+              "key": "bng_notify",
+              "value": "Update"
+            }
+          ]
+        }
+      ],
+      "Stage": 30,
+      "UserAzureActiveDirectoryObjectId": "7e46669b-c45b-414c-b70e-e0235ce7be34",
+      "UserId": "b2d5bfd4-63a9-ee11-be37-0022480040a6"
+    },
+    "PostEntityImages": [],
+    "PreEntityImages": [],
+    "PrimaryEntityId": "373dc92d-1fdf-ee11-904d-000d3a86c43e",
+    "PrimaryEntityName": "bng_notify",
+    "RequestId": "449b0629-75b5-4c3e-b5c6-fd83c8378b10",
+    "SecondaryEntityName": "none",
+    "SharedVariables": [
+      {
+        "key": "IsAutoTransact",
+        "value": true
+      },
+      {
+        "key": "AcceptLang",
+        "value": "en-US"
+      }
+    ],
+    "Stage": 30,
+    "UserAzureActiveDirectoryObjectId": "7e46669b-c45b-414c-b70e-e0235ce7be34",
+    "UserId": "b2d5bfd4-63a9-ee11-be37-0022480040a6"
+  },
+  "PostEntityImages": [
+    {
+      "key": "AsynchronousStepPrimaryName",
+      "value": {
+        "Attributes": [
+          {
+            "key": "subject",
+            "value": "Notice of intent"
+          },
+          {
+            "key": "activityid",
+            "value": "373dc92d-1fdf-ee11-904d-000d3a86c43e"
+          }
+        ],
+        "EntityState": null,
+        "FormattedValues": [],
+        "Id": "373dc92d-1fdf-ee11-904d-000d3a86c43e",
+        "KeyAttributes": [],
+        "LogicalName": "bng_notify",
+        "RelatedEntities": [],
+        "RowVersion": null
+      }
+    }
+  ],
+  "PreEntityImages": [],
+  "PrimaryEntityId": "373dc92d-1fdf-ee11-904d-000d3a86c43e",
+  "PrimaryEntityName": "bng_notify",
+  "RequestId": "449b0629-75b5-4c3e-b5c6-fd83c8378b10",
+  "SecondaryEntityName": "none",
+  "SharedVariables": [
+    {
+      "key": "IsAutoTransact",
+      "value": true
+    },
+    {
+      "key": "AcceptLang",
+      "value": "en-US"
+    }
+  ],
+  "Stage": 40,
+  "UserAzureActiveDirectoryObjectId": "7e46669b-c45b-414c-b70e-e0235ce7be34",
+  "UserId": "b2d5bfd4-63a9-ee11-be37-0022480040a6"
+}

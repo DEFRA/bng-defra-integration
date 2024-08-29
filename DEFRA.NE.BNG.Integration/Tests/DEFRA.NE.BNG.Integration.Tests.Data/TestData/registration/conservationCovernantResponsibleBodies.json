@@ -1,0 +1,218 @@
+﻿{
+  "landownerGainSiteRegistration": {
+    "applicant": {
+      "id": "40f533d3-80fd-ee11-a1fe-000d3a4b0bad",
+      "role": "agent"
+    },
+    "habitats": {
+      "baseline": [
+        {
+          "habitatType": "Grassland - Modified grassland",
+          "baselineReference": "1",
+          "module": "Baseline",
+          "state": "Habitat",
+          "condition": "Good",
+          "area": {
+            "beforeEnhancement": 0.5
+          },
+          "measurementUnits": "hectares"
+        },
+        {
+          "habitatType": "Grassland - Floodplain wetland mosaic and CFGM",
+          "baselineReference": "2",
+          "module": "Baseline",
+          "state": "Habitat",
+          "condition": "Poor",
+          "area": {
+            "beforeEnhancement": 4.5,
+            "afterEnhancement": 4.5
+          },
+          "measurementUnits": "hectares"
+        },
+        {
+          "habitatType": "Other rivers and streams",
+          "baselineReference": "1",
+          "module": "Baseline",
+          "state": "Watercourse",
+          "condition": "Moderate",
+          "area": {
+            "beforeEnhancement": 0.6,
+            "afterEnhancement": 0.6
+          },
+          "measurementUnits": "kilometres"
+        }
+      ],
+      "proposed": [
+        {
+          "habitatType": "Wetland - Reedbeds",
+          "baselineReference": "",
+          "module": "Created",
+          "state": "Habitat",
+          "condition": "Moderate",
+          "strategicSignificance": "Formally identified in local strategy",
+          "advanceCreation": 0,
+          "delayedCreation": 0,
+          "area": 0.5,
+          "measurementUnits": "hectares"
+        },
+        {
+          "habitatType": "Grassland - Floodplain wetland mosaic and CFGM",
+          "baselineReference": "2",
+          "module": "Enhanced",
+          "state": "Habitat",
+          "condition": "Good",
+          "strategicSignificance": "Area/compensation not in local strategy/ no local strategy",
+          "area": 4.5,
+          "measurementUnits": "hectares"
+        },
+        {
+          "habitatType": "Other rivers and streams",
+          "baselineReference": "1",
+          "module": "Enhanced",
+          "state": "Watercourse",
+          "condition": "Moderate",
+          "strategicSignificance": "Formally identified in local strategy",
+          "area": 0.6,
+          "measurementUnits": "kilometres",
+          "encroachmentExtent": "Minor",
+          "encroachmentExtentBothBanks": "Moderate/ No Encroachment"
+        }
+      ]
+    },
+    "files": [
+      {
+        "fileName": "Proof-Ownership.docx",
+        "fileLocation": "cab8c6a2-cee4-4bdf-9ef2-b88f62c5cd2b/land-ownership/Proof-Ownership.docx",
+        "fileSize": 15324,
+        "fileType": "land-ownership",
+        "contentMediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "optional": false
+      },
+      {
+        "fileName": "Credits Form - Org Demo Form.pdf",
+        "fileLocation": "cab8c6a2-cee4-4bdf-9ef2-b88f62c5cd2b/land-ownership/Credits Form - Org Demo Form.pdf",
+        "fileSize": 204582,
+        "fileType": "land-ownership",
+        "contentMediaType": "application/pdf",
+        "optional": false
+      },
+      {
+        "fileName": "Allocations Form - Training.pdf",
+        "fileLocation": "cab8c6a2-cee4-4bdf-9ef2-b88f62c5cd2b/land-ownership/Allocations Form - Training.pdf",
+        "fileSize": 154643,
+        "fileType": "land-ownership",
+        "contentMediaType": "application/pdf",
+        "optional": false
+      },
+      {
+        "contentMediaType": "application/pdf",
+        "fileType": "legal-agreement",
+        "fileSize": 6469324,
+        "fileLocation": "cab8c6a2-cee4-4bdf-9ef2-b88f62c5cd2b/legal-agreement/Legal-Agreement.pdf",
+        "fileName": "Legal-Agreement.pdf",
+        "optional": false
+      },
+      {
+        "contentMediaType": "application/pdf",
+        "fileType": "legal-agreement",
+        "fileSize": 154643,
+        "fileLocation": "cab8c6a2-cee4-4bdf-9ef2-b88f62c5cd2b/legal-agreement/Allocations Form - Training.pdf",
+        "fileName": "Allocations Form - Training.pdf",
+        "optional": false
+      },
+      {
+        "contentMediaType": "application/pdf",
+        "fileType": "land-boundary",
+        "fileSize": 2209804,
+        "fileLocation": "cab8c6a2-cee4-4bdf-9ef2-b88f62c5cd2b/land-boundary/Land-Boundary.pdf",
+        "fileName": "Land-Boundary.pdf",
+        "optional": false
+      },
+      {
+        "contentMediaType": "application/vnd.ms-excel.sheet.macroEnabled.12",
+        "fileType": "metric",
+        "fileSize": 4302366,
+        "fileLocation": "cab8c6a2-cee4-4bdf-9ef2-b88f62c5cd2b/metric-upload/SA_LatestVersion_29042024CreditswithUnitShortfall.xlsm",
+        "fileName": "SA_LatestVersion_29042024CreditswithUnitShortfall.xlsm",
+        "optional": false
+      },
+      {
+        "contentMediaType": "application/pdf",
+        "fileType": "local-land-charge",
+        "fileSize": 560114,
+        "fileLocation": "cab8c6a2-cee4-4bdf-9ef2-b88f62c5cd2b/local-land-charge/Registration Form - Maureen Matthews.pdf",
+        "fileName": "Registration Form - Maureen Matthews.pdf",
+        "optional": false
+      },
+      {
+        "contentMediaType": "application/pdf",
+        "fileType": "habitat-plan",
+        "fileSize": 135669,
+        "fileLocation": "cab8c6a2-cee4-4bdf-9ef2-b88f62c5cd2b/habitat-plan/1107 REGISTER V4 (3) Adobe Version.pdf",
+        "fileName": "1107 REGISTER V4 (3) Adobe Version.pdf",
+        "optional": false
+      },
+      {
+        "contentMediaType": "application/pdf",
+        "fileType": "written-authorisation",
+        "fileSize": 140953,
+        "fileLocation": "cab8c6a2-cee4-4bdf-9ef2-b88f62c5cd2b/written-authorisation/Authorise An Agent Form - Training.pdf",
+        "fileName": "Authorise An Agent Form - Training.pdf",
+        "optional": false
+      }
+    ],
+    "gainSiteReference": "BNGREG-XOS66-A8NBV",
+    "landBoundaryGridReference": "SE110441",
+    "landBoundaryHectares": 21.5,
+    "legalAgreementType": "759150001",
+    "enhancementWorkStartDate": "1911-11-11T00:00:00Z",
+    "legalAgreementEndDate": "2011-11-11T00:00:00Z",
+    "habitatPlanIncludedLegalAgreementYesNo": "No",
+    "landowners": {
+      "organisation": [
+        {
+          "organisationName": "SA_Org_ConvCov_02052024"
+        }
+      ],
+      "individual": [
+        {
+          "firstName": "SA_PO_02052024_ConvCovFN",
+          "lastName": "SA_PO_02052024_ConvCovLN",
+          "email": "bngfirstnamebnglastname+44@gmail.com"
+        }
+      ]
+    },
+    "conservationCovernantResponsibleBodies": [
+      {
+        "responsibleBodyName": "SA_po_02052024_Resp1"
+      },
+      {
+        "responsibleBodyName": "SA_po_02052024_Resp2"
+      }
+    ],
+    "submittedOn": "2024-05-02T15:58:42.772Z",
+    "payment": {
+      "reference": "BNGREG-XOS66-A8NBV",
+      "method": "BACS"
+    },
+    "agent": {
+      "clientType": "organisation",
+      "clientAddress": {
+        "type": "uk",
+        "line1": "SA_PO_02052024_Add1",
+        "town": "NewLondon",
+        "postcode": "se3 9AB"
+      },
+      "clientNameOrganisation": "SA_Org_02052024"
+    },
+    "organisation": {
+      "id": "5bf533d3-80fd-ee11-a1fe-000d3a4b0bad",
+      "address": {
+        "type": "uk",
+        "line1": "SA_PO_02052024_Add1",
+        "town": "NewLondon",
+        "postcode": "se3 9AB"
+      }
+    }
+  }
+}

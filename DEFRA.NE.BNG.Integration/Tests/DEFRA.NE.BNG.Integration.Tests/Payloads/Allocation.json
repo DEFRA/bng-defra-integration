@@ -1,0 +1,57 @@
+{
+  "developerRegistration": {
+    "applicant": {
+      "id": "007",
+      "role": "Developer"
+    },
+    "habitats": {
+      "proposed": [
+        {
+          "id": "HAB-00001100-BT7X4",
+          "area": 0.9,
+          "deliveredUnits": 7.01,
+          "measurementUnits": "hectares"
+        },
+        {
+          "id": "HAB-00001110-BK6J4",
+          "area": 0.9,
+          "deliveredUnits": 7.01,
+          "measurementUnits": "hectares"
+        }
+      ]
+    },
+    "files": [
+      {
+        "contentMediaType": "application/vnd.ms-excel.sheet.macroEnabled.12",
+        "fileType": "developer-upload-metric",
+        "fileSize": 5016056,
+        "fileLocation": "fb69298f-fbae-4a53-a691-64cd6540ba41/metric-upload/data.xlsm",
+        "fileName": "data.xlsm"
+      },
+      {
+        "contentMediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "fileType": "developer-upload-consent",
+        "fileSize": 20821,
+        "fileLocation": "fb69298f-fbae-4a53-a691-64cd6540ba41/developer-upload-consent/Lorem ipsum dolor sit amet.docx",
+        "fileName": "Lorem ipsum dolor sit amet.docx"
+      }
+    ],
+    "developmentDetails": {
+      "projectName": "Riverside",
+      "localAuthority": "Sevenoaks",
+      "planningReference": "987654321ref"
+    },
+    "allocatedGainSites": [
+      {
+        "gainSiteReference": "BGS-031123041"
+      }
+    ],
+    "referenceNumber": "BNGREG-6040R-WTHU",
+    "payment": {
+      "caseType": "registration",
+      "fee": 639,
+      "method": "BACS"
+    },
+    "submittedOn": "2023-02-16T13:30:12Z"
+  }
+}

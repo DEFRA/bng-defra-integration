@@ -1,0 +1,440 @@
+{
+  "BusinessUnitId": "64026cfe-999b-ee11-be37-000d3a875b5f",
+  "CorrelationId": "6877afd5-48e1-494a-8d8c-e5da9354f2ec",
+  "Depth": 1,
+  "InitiatingUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+  "InitiatingUserAzureActiveDirectoryObjectId": "07b5e914-b073-4b20-96a5-74e992e82443",
+  "InitiatingUserId": "3fd5bfd4-63a9-ee11-be37-0022480040a6",
+  "InputParameters": [
+    {
+      "key": "Target",
+      "value": {
+        "__type": "Entity:http://schemas.microsoft.com/xrm/2011/Contracts",
+        "Attributes": [
+          {
+            "key": "bng_actiontype",
+            "value": {
+              "__type": "OptionSetValue:http://schemas.microsoft.com/xrm/2011/Contracts",
+              "Value": 759150003
+            }
+          },
+          {
+            "key": "activityid",
+            "value": "2545fbd3-3cd9-ee11-904d-0022480044fd"
+          },
+          {
+            "key": "modifiedon",
+            "value": "/Date(1709456581000)/"
+          },
+          {
+            "key": "modifiedby",
+            "value": {
+              "__type": "EntityReference:http://schemas.microsoft.com/xrm/2011/Contracts",
+              "Id": "3fd5bfd4-63a9-ee11-be37-0022480040a6",
+              "KeyAttributes": [],
+              "LogicalName": "systemuser",
+              "Name": null,
+              "RowVersion": null
+            }
+          },
+          {
+            "key": "modifiedonbehalfby",
+            "value": null
+          }
+        ],
+        "EntityState": null,
+        "FormattedValues": [],
+        "Id": "2545fbd3-3cd9-ee11-904d-0022480044fd",
+        "KeyAttributes": [],
+        "LogicalName": "bng_notify",
+        "RelatedEntities": [],
+        "RowVersion": "8804823"
+      }
+    }
+  ],
+  "IsExecutingOffline": false,
+  "IsInTransaction": false,
+  "IsOfflinePlayback": false,
+  "IsolationMode": 1,
+  "MessageName": "Update",
+  "Mode": 1,
+  "OperationCreatedOn": "/Date(1709456581000+0000)/",
+  "OperationId": "2845fbd3-3cd9-ee11-904d-0022480044fd",
+  "OrganizationId": "a810fbe5-5fa9-ee11-be32-6045bdd202ab",
+  "OrganizationName": "unqa810fbe55fa9ee11be326045bdd20",
+  "OutputParameters": [],
+  "OwningExtension": {
+    "Id": "8ac6263b-de60-ed11-9562-000d3a875dd4",
+    "KeyAttributes": [],
+    "LogicalName": "sdkmessageprocessingstep",
+    "Name": null,
+    "RowVersion": null
+  },
+  "ParentContext": {
+    "BusinessUnitId": "64026cfe-999b-ee11-be37-000d3a875b5f",
+    "CorrelationId": "6877afd5-48e1-494a-8d8c-e5da9354f2ec",
+    "Depth": 1,
+    "InitiatingUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+    "InitiatingUserAzureActiveDirectoryObjectId": "07b5e914-b073-4b20-96a5-74e992e82443",
+    "InitiatingUserId": "3fd5bfd4-63a9-ee11-be37-0022480040a6",
+    "InputParameters": [
+      {
+        "key": "Target",
+        "value": {
+          "__type": "Entity:http://schemas.microsoft.com/xrm/2011/Contracts",
+          "Attributes": [
+            {
+              "key": "bng_actiontype",
+              "value": {
+                "__type": "OptionSetValue:http://schemas.microsoft.com/xrm/2011/Contracts",
+                "Value": 759150003
+              }
+            },
+            {
+              "key": "activityid",
+              "value": "2545fbd3-3cd9-ee11-904d-0022480044fd"
+            }
+          ],
+          "EntityState": null,
+          "FormattedValues": [],
+          "Id": "2545fbd3-3cd9-ee11-904d-0022480044fd",
+          "KeyAttributes": [],
+          "LogicalName": "bng_notify",
+          "RelatedEntities": [],
+          "RowVersion": null
+        }
+      }
+    ],
+    "IsExecutingOffline": false,
+    "IsInTransaction": false,
+    "IsOfflinePlayback": false,
+    "IsolationMode": 1,
+    "MessageName": "Update",
+    "Mode": 1,
+    "OperationCreatedOn": "/Date(1709456581000+0000)/",
+    "OperationId": "2845fbd3-3cd9-ee11-904d-0022480044fd",
+    "OrganizationId": "a810fbe5-5fa9-ee11-be32-6045bdd202ab",
+    "OrganizationName": "unqa810fbe55fa9ee11be326045bdd20",
+    "OutputParameters": [],
+    "OwningExtension": {
+      "Id": "8ac6263b-de60-ed11-9562-000d3a875dd4",
+      "KeyAttributes": [],
+      "LogicalName": "sdkmessageprocessingstep",
+      "Name": null,
+      "RowVersion": null
+    },
+    "ParentContext": {
+      "BusinessUnitId": "64026cfe-999b-ee11-be37-000d3a875b5f",
+      "CorrelationId": "6877afd5-48e1-494a-8d8c-e5da9354f2ec",
+      "Depth": 1,
+      "InitiatingUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+      "InitiatingUserAzureActiveDirectoryObjectId": "07b5e914-b073-4b20-96a5-74e992e82443",
+      "InitiatingUserId": "3fd5bfd4-63a9-ee11-be37-0022480040a6",
+      "InputParameters": [
+        {
+          "key": "Target",
+          "value": {
+            "__type": "Entity:http://schemas.microsoft.com/xrm/2011/Contracts",
+            "Attributes": [
+              {
+                "key": "bng_actiontype",
+                "value": {
+                  "__type": "OptionSetValue:http://schemas.microsoft.com/xrm/2011/Contracts",
+                  "Value": 759150003
+                }
+              },
+              {
+                "key": "activityid",
+                "value": "2545fbd3-3cd9-ee11-904d-0022480044fd"
+              }
+            ],
+            "EntityState": null,
+            "FormattedValues": [],
+            "Id": "2545fbd3-3cd9-ee11-904d-0022480044fd",
+            "KeyAttributes": [],
+            "LogicalName": "bng_notify",
+            "RelatedEntities": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "key": "ReturnRowVersion",
+          "value": null
+        },
+        {
+          "key": "x-ms-app-name",
+          "value": "bng_NaturalEnglandBNG"
+        },
+        {
+          "key": "ReturnRepresentationColumnSet",
+          "value": {
+            "__type": "ColumnSet:http://schemas.microsoft.com/xrm/2011/Contracts",
+            "AllColumns": false,
+            "AttributeExpressions": [],
+            "Columns": [
+              "activityadditionalparams",
+              "activityid",
+              "activitytypecode",
+              "actualdurationminutes",
+              "actualend",
+              "actualstart",
+              "bng_actiontype",
+              "bng_applicantid",
+              "bng_externalnotifyid",
+              "bng_retrycount",
+              "community",
+              "createdby",
+              "createdon",
+              "createdonbehalfby",
+              "deliverylastattemptedon",
+              "deliveryprioritycode",
+              "description",
+              "exchangeitemid",
+              "exchangerate",
+              "exchangeweblink",
+              "importsequencenumber",
+              "instancetypecode",
+              "isbilled",
+              "ismapiprivate",
+              "isregularactivity",
+              "isworkflowcreated",
+              "lastonholdtime",
+              "leftvoicemail",
+              "modifiedby",
+              "modifiedon",
+              "modifiedonbehalfby",
+              "onholdtime",
+              "overriddencreatedon",
+              "ownerid",
+              "owningbusinessunit",
+              "owningteam",
+              "owninguser",
+              "postponeactivityprocessinguntil",
+              "prioritycode",
+              "processid",
+              "regardingobjectid",
+              "scheduleddurationminutes",
+              "scheduledend",
+              "scheduledstart",
+              "sendermailboxid",
+              "senton",
+              "seriesid",
+              "serviceid",
+              "slaid",
+              "slainvokedid",
+              "sortdate",
+              "stageid",
+              "statecode",
+              "statuscode",
+              "subject",
+              "timezoneruleversionnumber",
+              "transactioncurrencyid",
+              "traversedpath",
+              "utcconversiontimezonecode",
+              "versionnumber"
+            ]
+          }
+        },
+        {
+          "key": "ReturnRepresentationRelationshipQueryCollection",
+          "value": []
+        }
+      ],
+      "IsExecutingOffline": false,
+      "IsInTransaction": false,
+      "IsOfflinePlayback": false,
+      "IsolationMode": 1,
+      "MessageName": "Update",
+      "Mode": 1,
+      "OperationCreatedOn": "/Date(1709456581000+0000)/",
+      "OperationId": "2845fbd3-3cd9-ee11-904d-0022480044fd",
+      "OrganizationId": "a810fbe5-5fa9-ee11-be32-6045bdd202ab",
+      "OrganizationName": "unqa810fbe55fa9ee11be326045bdd20",
+      "OutputParameters": [],
+      "OwningExtension": {
+        "Id": "8ac6263b-de60-ed11-9562-000d3a875dd4",
+        "KeyAttributes": [],
+        "LogicalName": "sdkmessageprocessingstep",
+        "Name": null,
+        "RowVersion": null
+      },
+      "ParentContext": null,
+      "PostEntityImages": [],
+      "PreEntityImages": [],
+      "PrimaryEntityId": "2545fbd3-3cd9-ee11-904d-0022480044fd",
+      "PrimaryEntityName": "none",
+      "RequestId": "5c5ce159-a583-4a3d-8b2e-015aaf1c77b7",
+      "SecondaryEntityName": "none",
+      "SharedVariables": [
+        {
+          "key": "ReturnRepresentationColumnSet",
+          "value": {
+            "__type": "ColumnSet:http://schemas.microsoft.com/xrm/2011/Contracts",
+            "AllColumns": false,
+            "AttributeExpressions": [],
+            "Columns": [
+              "activityadditionalparams",
+              "activityid",
+              "activitytypecode",
+              "actualdurationminutes",
+              "actualend",
+              "actualstart",
+              "bng_actiontype",
+              "bng_applicantid",
+              "bng_externalnotifyid",
+              "bng_retrycount",
+              "community",
+              "createdby",
+              "createdon",
+              "createdonbehalfby",
+              "deliverylastattemptedon",
+              "deliveryprioritycode",
+              "description",
+              "exchangeitemid",
+              "exchangerate",
+              "exchangeweblink",
+              "importsequencenumber",
+              "instancetypecode",
+              "isbilled",
+              "ismapiprivate",
+              "isregularactivity",
+              "isworkflowcreated",
+              "lastonholdtime",
+              "leftvoicemail",
+              "modifiedby",
+              "modifiedon",
+              "modifiedonbehalfby",
+              "onholdtime",
+              "overriddencreatedon",
+              "ownerid",
+              "owningbusinessunit",
+              "owningteam",
+              "owninguser",
+              "postponeactivityprocessinguntil",
+              "prioritycode",
+              "processid",
+              "regardingobjectid",
+              "scheduleddurationminutes",
+              "scheduledend",
+              "scheduledstart",
+              "sendermailboxid",
+              "senton",
+              "seriesid",
+              "serviceid",
+              "slaid",
+              "slainvokedid",
+              "sortdate",
+              "stageid",
+              "statecode",
+              "statuscode",
+              "subject",
+              "timezoneruleversionnumber",
+              "transactioncurrencyid",
+              "traversedpath",
+              "utcconversiontimezonecode",
+              "versionnumber"
+            ]
+          }
+        },
+        {
+          "key": "ReturnRepresentationRelationshipQueryCollection",
+          "value": []
+        },
+        {
+          "key": "IsAutoTransact",
+          "value": false
+        },
+        {
+          "key": "AcceptLang",
+          "value": "en-GB,en-US;q=0.9,en;q=0.8"
+        },
+        {
+          "key": "x-ms-app-name",
+          "value": "bng_NaturalEnglandBNG"
+        },
+        {
+          "key": "ChangedEntityTypes",
+          "value": [
+            {
+              "__type": "KeyValuePairOfstringstring:#System.Collections.Generic",
+              "key": "bng_notify",
+              "value": "Update"
+            }
+          ]
+        }
+      ],
+      "Stage": 30,
+      "UserAzureActiveDirectoryObjectId": "07b5e914-b073-4b20-96a5-74e992e82443",
+      "UserId": "3fd5bfd4-63a9-ee11-be37-0022480040a6"
+    },
+    "PostEntityImages": [],
+    "PreEntityImages": [],
+    "PrimaryEntityId": "2545fbd3-3cd9-ee11-904d-0022480044fd",
+    "PrimaryEntityName": "bng_notify",
+    "RequestId": "5c5ce159-a583-4a3d-8b2e-015aaf1c77b7",
+    "SecondaryEntityName": "none",
+    "SharedVariables": [
+      {
+        "key": "IsAutoTransact",
+        "value": true
+      },
+      {
+        "key": "AcceptLang",
+        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+      },
+      {
+        "key": "x-ms-app-name",
+        "value": "bng_NaturalEnglandBNG"
+      }
+    ],
+    "Stage": 30,
+    "UserAzureActiveDirectoryObjectId": "07b5e914-b073-4b20-96a5-74e992e82443",
+    "UserId": "3fd5bfd4-63a9-ee11-be37-0022480040a6"
+  },
+  "PostEntityImages": [
+    {
+      "key": "AsynchronousStepPrimaryName",
+      "value": {
+        "Attributes": [
+          {
+            "key": "subject",
+            "value": "Request for Further Information"
+          },
+          {
+            "key": "activityid",
+            "value": "2545fbd3-3cd9-ee11-904d-0022480044fd"
+          }
+        ],
+        "EntityState": null,
+        "FormattedValues": [],
+        "Id": "2545fbd3-3cd9-ee11-904d-0022480044fd",
+        "KeyAttributes": [],
+        "LogicalName": "bng_notify",
+        "RelatedEntities": [],
+        "RowVersion": null
+      }
+    }
+  ],
+  "PreEntityImages": [],
+  "PrimaryEntityId": "2545fbd3-3cd9-ee11-904d-0022480044fd",
+  "PrimaryEntityName": "bng_notify",
+  "RequestId": "5c5ce159-a583-4a3d-8b2e-015aaf1c77b7",
+  "SecondaryEntityName": "none",
+  "SharedVariables": [
+    {
+      "key": "IsAutoTransact",
+      "value": true
+    },
+    {
+      "key": "AcceptLang",
+      "value": "en-GB,en-US;q=0.9,en;q=0.8"
+    },
+    {
+      "key": "x-ms-app-name",
+      "value": "bng_NaturalEnglandBNG"
+    }
+  ],
+  "Stage": 40,
+  "UserAzureActiveDirectoryObjectId": "07b5e914-b073-4b20-96a5-74e992e82443",
+  "UserId": "3fd5bfd4-63a9-ee11-be37-0022480040a6"
+}

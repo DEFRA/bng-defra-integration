@@ -1,0 +1,14 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "clientId": "#####",
+    "clientSecret": "#####",
+    "environment": "defra-ne-bng-test00.crm11",
+    "ServiceBusConnection": "####",
+    "AzureWebJobsServiceBus": "####",
+    "BlobConnectionString": "####",
+    "BlobContainer": "trusted"
+  }
+}

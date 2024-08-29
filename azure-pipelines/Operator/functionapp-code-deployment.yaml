@@ -1,0 +1,27 @@
+parameters:
+  - name: azureSubscription
+    type: string
+  - name: resourceGroupName
+    type: string
+  - name: appName
+    type: string
+  - name: productName
+    type: string
+  - name: zipFileName
+    type: string
+  - name: appType
+    type: string
+  - name: operationName
+    type: string
+    default: "Deploy Azure Function"
+
+steps:
+  - task: AzureFunctionApp@2
+    displayName: ${{parameters.operationName}}
+    inputs:
+      azureSubscription: $(azureSubscription)
+      resourceGroupName: ${{parameters.resourceGroupName}}
+      appName: ${{parameters.appName}}
+      appType: ${{parameters.appType}}
+      package: "../${{parameters.productName}}/**/*.zip"
+      deploymentMethod: zipDeploy

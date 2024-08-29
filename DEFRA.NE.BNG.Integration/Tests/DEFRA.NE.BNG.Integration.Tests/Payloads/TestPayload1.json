@@ -1,0 +1,36 @@
+{
+    "landownerGainSiteRegistration":
+    {
+        "gainSiteReference":"TS-10102022-6",
+        "legalAgreementType": "759150001",
+        "habitatWorkStartDate" : "2022-10-06T17:03:38.000Z",
+        "legalAgreementStartDate" : "2022-10-06T17:03:38.000Z",
+        "managementMonitoringStartDate" : "2022-10-06T17:03:38.000Z",
+        "landBoundaryGridReference": "7634278",
+        "submittedOn": "2022-10-07T17:03:38.000Z",
+        "landBoundaryHectares":2.5,
+        "legalAgreementParties": [
+        {
+            "name": "Unknown",
+            "role": "Test User"
+        },
+        {
+            "name": "Testing1",
+            "role": "Test User"
+        }],
+        "applicant":
+        {
+        "firstName": " ",
+        "lastName": "Tony Hawk",
+        "role": "Testing From Function" 
+        },
+        "files": [
+            {
+            "contentMediaType": "doc",
+            "fileName": "legal-agreement.doc",
+            "fileLocation": "78ea9067-aaea-4949-999f-7aae06505e1a/legal-agreement/flood-services-overview.docx",
+            "fileType":"legal-agreement",
+            "fileSize":"0.01"
+        }]
+    }
+}

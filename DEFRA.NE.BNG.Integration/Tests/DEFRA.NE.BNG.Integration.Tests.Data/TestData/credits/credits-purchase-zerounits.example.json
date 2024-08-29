@@ -1,0 +1,62 @@
+{
+  "creditsPurchase": {
+    "applicant": {
+      "id": "123456",
+      "middleName": "",
+      "dateOfBirth": "1999-02-02",
+      "nationality": [
+        "Belarusian"
+      ]
+    },
+    "development": {
+      "name": "Gain Site 2 for Digital",
+      "planningReference": "ABC/123/456",
+      "localPlanningAuthority": {
+        "code": null,
+        "name": "Example"
+      }
+    },
+    "products": [
+      {
+        "code": "a1",
+        "qty": 1
+      },
+      {
+        "code": "a2",
+        "qty": 0
+      },
+      {
+        "code": "a3",
+        "qty": 0
+      },
+      {
+        "code": "a4",
+        "qty": 0
+      },
+      {
+        "code": "a5",
+        "qty": 0
+      },
+      {
+        "code": "h",
+        "qty": 0
+      },
+      {
+        "code": "w",
+        "qty": 0
+      }
+    ],
+    "purchaseOrderNumber": null,
+    "files": [
+      {
+        "contentMediaType": "application/vnd.ms-excel.sheet.macroEnabled.12",
+        "fileType": "credits-purchase-metric",
+        "fileSize": 5080204,
+        "fileLocation": "32d62407-bb97-408e-afe2-88a7140e099e/credits-metric-upload/metric-4.1.xlsm",
+        "fileName": "metric-4.1.xlsm"
+      }
+    ],
+    "creditReference": "BNGCRD-KUOIP-ANYWM",
+    "submittedOn": "2024-03-25T11:24:59.088Z"
+  }
+}

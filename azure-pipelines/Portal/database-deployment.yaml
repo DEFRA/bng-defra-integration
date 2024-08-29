@@ -1,0 +1,56 @@
+parameters:
+  - name: azureSubscription
+    type: string
+  - name: feedName
+    type: string
+  - name: pacakgeName
+    type: string
+  - name: packageversion
+    type: string    
+  - name: databasepacakgeName
+    type: string
+  - name: POSTGRES_SSL_MODE
+    type: string
+  - name: POSTGRES_BNG_CLIENT_ID
+    type: string
+  - name: POSTGRES_HOST
+    type: string
+  - name: POSTGRES_USER
+    type: string
+  - name: POSTGRES_DATABASE
+    type: string
+  - name: POSTGRES_PORT
+    type: string
+
+steps:
+  - task: DownloadPackage@1
+    inputs:
+      packageType: "upack"
+      feed: "$(feedName)"
+      definition: "$(pacakgeName)"
+      version: "${{ parameters.packageversion }}"
+      extract: true
+      downloadPath: "$(System.ArtifactsDirectory)"
+
+  - task: NodeTool@0
+    displayName: "Use Node 18.x"
+    inputs:
+      versionSpec: 18.x
+
+  - task: AzureCLI@2
+    displayName: 'Azure CLI '
+    inputs:
+      azureSubscription: '$(azureSubscription)'
+      scriptType: bash
+      scriptLocation: inlineScript
+      inlineScript: |
+        cd $(System.ArtifactsDirectory)
+        unzip -q $(System.ArtifactsDirectory)/$(databasepacakgeName).zip
+        npm run cli-up     
+    env:
+      POSTGRES_SSL_MODE: $(POSTGRES_SSL_MODE)
+      POSTGRES_BNG_CLIENT_ID: $(POSTGRES_BNG_CLIENT_ID)
+      POSTGRES_HOST: $(POSTGRES_HOST)
+      POSTGRES_USER: $(POSTGRES_USER)
+      POSTGRES_DATABASE: $(POSTGRES_DATABASE)
+      POSTGRES_PORT: $(POSTGRES_PORT)

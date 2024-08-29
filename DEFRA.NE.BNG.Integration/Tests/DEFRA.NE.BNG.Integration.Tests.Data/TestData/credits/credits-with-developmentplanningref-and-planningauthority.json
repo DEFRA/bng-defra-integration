@@ -1,0 +1,60 @@
+{
+  "creditsPurchase": {
+    "applicant": {
+      "id": "b2a5a66b-83fd-ee11-a1fe-6045bd8f7280"
+    },
+    "development": {
+      "planningReference": "SACredits0304",
+      "name": null,
+      "localPlanningAuthority": {
+        "code": "12345",
+        "name": "Richmond Upon Thames LPA"
+      }
+    },
+    "products": [
+      {
+        "code": "a1",
+        "qty": 1
+      },
+      {
+        "code": "a2",
+        "qty": 0
+      },
+      {
+        "code": "a3",
+        "qty": 0
+      },
+      {
+        "code": "a4",
+        "qty": 0
+      },
+      {
+        "code": "a5",
+        "qty": 0
+      },
+      {
+        "code": "h",
+        "qty": 1
+      },
+      {
+        "code": "w",
+        "qty": 0
+      }
+    ],
+    "purchaseOrderNumber": null,
+    "files": [
+      {
+        "contentMediaType": "application/vnd.ms-excel.sheet.macroEnabled.12",
+        "fileType": "credits-purchase-metric",
+        "fileSize": 4289165,
+        "fileLocation": "2983f2d1-2fae-4770-8c85-4205b49dd005/credits-metric-upload/SA_LatestVersion_01032024Credits.xlsm",
+        "fileName": "SA_LatestVersion_01032024Credits.xlsm"
+      }
+    ],
+    "creditReference": "BNGCRD-S0JE8-AQESD",
+    "submittedOn": "2024-04-29T09:20:38.663Z",
+    "organisation": {
+      "id": "d7a5a66b-83fd-ee11-a1fe-6045bd8f7280"
+    }
+  }
+}

@@ -1,0 +1,103 @@
+parameters:
+  - name: includeazurefunctions
+    type: boolean
+  - name: includelogicapps
+    type: boolean
+
+jobs:
+  - job: Build
+    displayName: Build and Publish
+    workspace:
+      clean: all
+    steps:
+      - task: UseDotNet@2
+        inputs:
+          packageType: "sdk"
+          version: "8.x"
+          installationPath: $(Agent.ToolsDirectory)/dotnet
+
+      - task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@2
+        displayName: "Prepare analysis on SonarCloud"
+        inputs:
+          SonarCloud: $(SonarConnection)
+          organization: $(sonarOrganization)
+          projectKey: $(sonarProjectKey)
+          projectName: $(sonarProjectName)
+          extraProperties: |
+            sonar.exclusions=$(Build.SourcesDirectory)/Defra.NE.BNG.Integration/DEFRA.NE.BNG.Integration/Tests/**/*.*,/Defra.NE.BNG.Integration/DEFRA.NE.BNG.Integration/Tests/**/*,$(Build.SourcesDirectory)/DEFRA.NE.BNG.Integration/Tests/**/*
+            sonar.tests=/Defra.NE.BNG.Integration/DEFRA.NE.BNG.Integration/Tests
+            sonar.cs.opencover.reportsPaths=${Agent.TempDirectory}/**/opencoverCoverage.xml
+
+      - task: DotNetCoreCLI@2
+        displayName: Build
+        inputs:
+          command: build
+          projects: "**/*.csproj"
+          arguments: "--configuration $(buildConfiguration)"
+
+      - task: DotNetCoreCLI@2
+        displayName: "Run tests"
+        inputs:
+          command: "test"
+          arguments: '--configuration $(BuildConfiguration) --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=$(Agent.TempDirectory)/coverage/ /p:MergeWith=$(Agent.TempDirectory)/coverage/ --collect "Code coverage" /p:ExcludeByAttribute=ExcludeFromCodeCoverageAttribute '
+          publishTestResults: true
+          projects: "**/*Tests/*.UnitTests.csproj"
+
+      - task: DotNetCoreCLI@2
+        displayName: "Publish integration solution"
+        inputs:
+          command: publish
+          arguments: "--configuration $(buildConfiguration) --output publish_output"
+          projects: $(project)
+          publishWebProjects: false
+          modifyOutputPath: false
+          zipAfterPublish: false
+        condition: eq(${{ parameters.includeazurefunctions }}, true)
+
+      - task: DotNetCoreCLI@2
+        displayName: "Publish Logic Apps"
+        inputs:
+          command: publish
+          publishWebProjects: false
+          projects: $(logicappsproject)
+          arguments: "--configuration $(BuildConfiguration) --output Logicapp_publish_output"
+          zipAfterPublish: True
+        condition: eq(${{ parameters.includelogicapps }}, true)
+
+      - task: DotNetCoreCLI@2
+        displayName: "Publish Logic Apps"
+        inputs:
+          command: publish
+          publishWebProjects: false
+          projects: $(logicappsproject)
+          arguments: "--configuration $(BuildConfiguration) --output Logicapp_publish_output"
+          zipAfterPublish: True
+        condition: eq(${{ parameters.includelogicapps }}, true)
+
+      - task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@2
+        displayName: "Run Sonar Code Analysis"
+
+      - task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@2
+        displayName: "Publish Quality Gate Result to Sonar"
+
+      - task: ArchiveFiles@2
+        displayName: "Archive files"
+        inputs:
+          rootFolderOrFile: "$(System.DefaultWorkingDirectory)/publish_output"
+          includeRootFolder: false
+          archiveFile: "$(System.DefaultWorkingDirectory)/$(zipFileName)"
+        condition: eq(${{ parameters.includeazurefunctions }}, true)
+
+      - task: PublishBuildArtifacts@1
+        displayName: "Publish Azure Funtion"
+        inputs:
+          PathtoPublish: "$(System.DefaultWorkingDirectory)/$(zipFileName)"
+          artifactName: $(productName)
+        condition: eq(${{ parameters.includeazurefunctions }}, true)
+
+      - task: PublishBuildArtifacts@1
+        displayName: "Publish Logic Apps"
+        inputs:
+          PathtoPublish: "$(System.DefaultWorkingDirectory)/Logicapp_publish_output"
+          artifactName: $(logicAppsProductName)
+        condition: eq(${{ parameters.includelogicapps }}, true)

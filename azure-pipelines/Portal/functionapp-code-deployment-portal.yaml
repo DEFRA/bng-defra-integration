@@ -1,0 +1,69 @@
+parameters:
+  - name: azureSubscription
+    type: string
+  - name: feedName
+    type: string
+  - name: pacakgeName
+    type: string
+  - name: packageversion
+    type: string
+  - name: functionAppName
+    type: string
+  - name: functionAppNamePacakgeName
+    type: string
+  - name: containerRegistryName
+    type: string
+  - name: containerAppNamePacakgeName
+    type: string
+  - name: logInServiceName
+    type: string
+  - name: webAppName
+    type: string
+
+steps:
+  - task: DownloadPackage@1
+    inputs:
+      packageType: "upack"
+      feed: "$(feedName)"
+      definition: "$(pacakgeName)"
+      version: "${{ parameters.packageversion }}"
+      extract: false
+      downloadPath: "$(System.ArtifactsDirectory)"
+
+  - task: DownloadPackage@1
+    inputs:
+      packageType: "upack"
+      feed: "$(feedName)"
+      definition: "$(pacakgeName)"
+      version: "${{ parameters.packageversion }}"
+      extract: true
+      downloadPath: "$(System.ArtifactsDirectory)"
+
+ 
+  - task: AzureFunctionApp@1
+    displayName: "Azure Function App Deploy: $(functionAppName)"
+    inputs:
+      azureSubscription: $(azureSubscription)
+      appType: functionAppLinux
+      appName: $(functionAppName)
+      package: "$(System.ArtifactsDirectory)/$(functionAppNamePacakgeName)"
+      runtimeStack: "NODE|18"
+      
+  - task: AzureCLI@2
+    displayName: "Push image to container registry"
+    inputs:
+      azureSubscription: $(azureSubscription)
+      scriptType: bash
+      scriptLocation: inlineScript
+      inlineScript: |
+        az acr login --name $(containerRegistryName)
+        docker image load --input $(System.ArtifactsDirectory)/$(containerAppNamePacakgeName).tar
+        docker image tag $(pacakgeName)/$(containerAppNamePacakgeName):${{ parameters.packageversion }} $(logInServiceName)/$(containerAppNamePacakgeName):${{ parameters.packageversion }}
+        docker push $(logInServiceName)/$(containerAppNamePacakgeName):${{ parameters.packageversion }}
+
+  - task: AzureWebAppContainer@1
+    displayName: 'Azure Web App on Container Deploy: $(webAppName)'
+    inputs:
+      azureSubscription: $(azureSubscription)
+      appName: $(webAppName)
+      containers: $(logInServiceName)/$(containerAppNamePacakgeName):${{ parameters.packageversion }}

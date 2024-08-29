@@ -1,0 +1,40 @@
+parameters:
+  - name: gitTestRootName
+    type: string
+  - name: gitCloneURL
+    type: string
+  - name: serviceURL
+    type: string
+  - name: uiTestUserId
+    type: string
+  - name: uiTestPassword
+    type: string
+
+steps:
+  - task: NodeTool@0
+    displayName: "Use Node 18.x"
+    inputs:
+      versionSpec: 18.x
+
+  - script: |
+      git clone $(gitCloneURL)
+      cd $(gitTestRootName)
+      npm ci
+      cd $(gitTestRootName)
+      google-chrome --version
+      npm run test:ci '@regression'
+    displayName: 'Command Line Script'
+    retryCountOnTaskFailure: 2
+    env:
+        SERVICE_URL: $(serviceURL)
+        BNG_FE_LOGIN_USER: $(uiTestUserId)
+        BNG_FE_LOGIN_PASSWORD: $(uiTestPassword)
+
+
+  - task: PublishTestResults@2
+    displayName: "Publish Test Results **/TEST-*.xml"
+    inputs:
+      testResultsFormat: "JUnit"
+      testResultsFiles: "**/TEST-*.xml"
+      searchFolder: "$(System.DefaultWorkingDirectory)"
+    condition: succeededOrFailed()

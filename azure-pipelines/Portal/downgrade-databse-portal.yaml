@@ -1,0 +1,231 @@
+parameters:
+  - name: version
+    displayName: "ADO Artifect Pacakge version e.g. 0.54.0"
+    type: string
+
+trigger: none
+
+pool: "DEFRA-COMMON-ubuntu2204-SSV3"
+
+variables:
+  azureSubscription: "AZD-BNG-DEV1"
+  feedName: "DEFRA-BNG-FEED"
+  pacakgeName: "bng-portal"
+  databasepacakgeName: "database-version-control"
+  POSTGRES_SSL_MODE: "require"
+  POSTGRES_DATABASE: "bng"
+  POSTGRES_PORT: 5432
+
+stages:
+  - stage: DeployToDevelopment
+    displayName: Deploy to Development
+    variables:
+      azureSubscription: "AZD-BNG-DEV1"
+      POSTGRES_BNG_CLIENT_ID: 82e80613-ddbc-4536-b170-58c596b32dbf
+      POSTGRES_HOST: devbngdbssq1401.postgres.database.azure.com
+      POSTGRES_USER: AG-Azure-BNG-DEV1-DBAdmin@devbngdbssq1401
+    jobs:
+      - deployment: DeployPortalFunctionApp
+        displayName: Deploy Portal Function & web App
+        environment: DEV1
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: downgrade-database.yaml@self
+                  parameters:
+                    azureSubscription: $(azureSubscription)
+                    feedName: $(feedName)
+                    pacakgeName: $(pacakgeName)
+                    packageversion: "${{ parameters.version }}"
+                    databasepacakgeName: $(databasepacakgeName)
+                    POSTGRES_SSL_MODE: $(POSTGRES_SSL_MODE)
+                    POSTGRES_BNG_CLIENT_ID: $(POSTGRES_BNG_CLIENT_ID)
+                    POSTGRES_HOST: $(POSTGRES_HOST)
+                    POSTGRES_USER: $(POSTGRES_USER)
+                    POSTGRES_DATABASE: $(POSTGRES_DATABASE)
+                    POSTGRES_PORT: $(POSTGRES_PORT)
+                
+  - stage: DeployToTest
+    displayName: Deploy to Test
+    dependsOn: DeployToDevelopment
+    variables:
+      azureSubscription: "AZD-BNG-TST1"
+      POSTGRES_BNG_CLIENT_ID: 90672e64-3dfb-4ce0-8952-192887ae4407
+      POSTGRES_HOST: tstbngdbssq1401.postgres.database.azure.com
+      POSTGRES_USER: AG-Azure-BNG-TST1-DBAdmin@tstbngdbssq1401
+    jobs:
+      - deployment: DeployPortalFunctionApp
+        displayName: Deploy Portal Function & web App
+        environment: TST1
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: downgrade-database.yaml@self
+                  parameters:
+                    azureSubscription: $(azureSubscription)
+                    feedName: $(feedName)
+                    pacakgeName: $(pacakgeName)
+                    packageversion: "${{ parameters.version }}"
+                    databasepacakgeName: $(databasepacakgeName)
+                    POSTGRES_SSL_MODE: $(POSTGRES_SSL_MODE)
+                    POSTGRES_BNG_CLIENT_ID: $(POSTGRES_BNG_CLIENT_ID)
+                    POSTGRES_HOST: $(POSTGRES_HOST)
+                    POSTGRES_USER: $(POSTGRES_USER)
+                    POSTGRES_DATABASE: $(POSTGRES_DATABASE)
+                    POSTGRES_PORT: $(POSTGRES_PORT)
+
+  - stage: DeployToTST2
+    displayName: Deploy to TST2-SIT
+    dependsOn: DeployToTest
+    variables:
+      azureSubscription: "AZD-BNG-TST2"
+      POSTGRES_BNG_CLIENT_ID: 79334913-69b3-4d26-abdf-5f3af098d587 #update as per environment
+      POSTGRES_HOST: tstbngdbssq2401.postgres.database.azure.com
+      POSTGRES_USER: AG-Azure-BNG-TST2-DBAdmin@tstbngdbssq2401
+    jobs:
+      - deployment: DeployPortalFunctionApp
+        displayName: Deploy Portal Function & web App
+        environment: TST2
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: downgrade-database.yaml@self
+                  parameters:
+                    azureSubscription: $(azureSubscription)
+                    feedName: $(feedName)
+                    pacakgeName: $(pacakgeName)
+                    packageversion: "${{ parameters.version }}"
+                    databasepacakgeName: $(databasepacakgeName)
+                    POSTGRES_SSL_MODE: $(POSTGRES_SSL_MODE)
+                    POSTGRES_BNG_CLIENT_ID: $(POSTGRES_BNG_CLIENT_ID)
+                    POSTGRES_HOST: $(POSTGRES_HOST)
+                    POSTGRES_USER: $(POSTGRES_USER)
+                    POSTGRES_DATABASE: $(POSTGRES_DATABASE)
+                    POSTGRES_PORT: $(POSTGRES_PORT)
+
+  - stage: DeployToTST4
+    displayName: Deploy to TST4-SIT
+    dependsOn: DeployToTest
+    variables:
+      azureSubscription: "AZR-BNG-TST4"
+      POSTGRES_BNG_CLIENT_ID: 79334913-69b3-4d26-abdf-5f3af098d587 #update as per environment
+      POSTGRES_HOST: tstbngdbssq4401.postgres.database.azure.com
+      POSTGRES_USER: AG-Azure-BNG-TST4-DBAdmin@tstbngdbssq4401
+    jobs:
+      - deployment: DeployPortalFunctionApp
+        displayName: Deploy Portal Function & web App
+        environment: TST4
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: downgrade-database.yaml@self
+                  parameters:
+                    azureSubscription: $(azureSubscription)
+                    feedName: $(feedName)
+                    pacakgeName: $(pacakgeName)
+                    packageversion: "${{ parameters.version }}"
+                    databasepacakgeName: $(databasepacakgeName)
+                    POSTGRES_SSL_MODE: $(POSTGRES_SSL_MODE)
+                    POSTGRES_BNG_CLIENT_ID: $(POSTGRES_BNG_CLIENT_ID)
+                    POSTGRES_HOST: $(POSTGRES_HOST)
+                    POSTGRES_USER: $(POSTGRES_USER)
+                    POSTGRES_DATABASE: $(POSTGRES_DATABASE)
+                    POSTGRES_PORT: $(POSTGRES_PORT)
+
+  - stage: DeployToPRE1
+    pool: "DEFRA-COMMON-ubuntu2204-SSV5"
+    displayName: Deploy to PRE1-UAT
+    dependsOn: DeployToTST2
+    variables:
+      azureSubscription: "AZR-BNG-PRE1"
+      POSTGRES_BNG_CLIENT_ID: b6765ee7-d286-400a-9919-154b1bfa181d #update as per environment
+      POSTGRES_HOST: prebngdbssq1401.postgres.database.azure.com
+      POSTGRES_USER: AG-Azure-BNG-PRE1-DBAdmin@prebngdbssq1401
+    jobs:
+      - deployment: DeployPortalFunctionApp
+        displayName: Deploy Portal Function & web App
+        environment: PRE1
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: downgrade-database.yaml@self
+                  parameters:
+                    azureSubscription: $(azureSubscription)
+                    feedName: $(feedName)
+                    pacakgeName: $(pacakgeName)
+                    packageversion: "${{ parameters.version }}"
+                    databasepacakgeName: $(databasepacakgeName)
+                    POSTGRES_SSL_MODE: $(POSTGRES_SSL_MODE)
+                    POSTGRES_BNG_CLIENT_ID: $(POSTGRES_BNG_CLIENT_ID)
+                    POSTGRES_HOST: $(POSTGRES_HOST)
+                    POSTGRES_USER: $(POSTGRES_USER)
+                    POSTGRES_DATABASE: $(POSTGRES_DATABASE)
+                    POSTGRES_PORT: $(POSTGRES_PORT)
+
+
+  - stage: DeployToPRE2
+    pool: "DEFRA-COMMON-ubuntu2204-SSV5"
+    displayName: Deploy to PRE2-PreProd
+    dependsOn: DeployToPRE1
+    variables:
+      azureSubscription: "AZR-BNG-PRE2"
+      POSTGRES_BNG_CLIENT_ID: 9e00ee42-8e61-4fd0-9a78-f44f9829741f #update as per environment
+      POSTGRES_HOST: prebngdbssq2401.postgres.database.azure.com
+      POSTGRES_USER: AG-Azure-BNG-PRE2-DBAdmin@prebngdbssq2401
+    jobs:
+      - deployment: DeployPortalFunctionApp
+        displayName: Deploy Portal Function & web App
+        environment: PRE2
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: downgrade-database.yaml@self
+                  parameters:
+                    azureSubscription: $(azureSubscription)
+                    feedName: $(feedName)
+                    pacakgeName: $(pacakgeName)
+                    packageversion: "${{ parameters.version }}"
+                    databasepacakgeName: $(databasepacakgeName)
+                    POSTGRES_SSL_MODE: $(POSTGRES_SSL_MODE)
+                    POSTGRES_BNG_CLIENT_ID: $(POSTGRES_BNG_CLIENT_ID)
+                    POSTGRES_HOST: $(POSTGRES_HOST)
+                    POSTGRES_USER: $(POSTGRES_USER)
+                    POSTGRES_DATABASE: $(POSTGRES_DATABASE)
+                    POSTGRES_PORT: $(POSTGRES_PORT)
+
+  - stage: DeployToPRD
+    pool: "DEFRA-COMMON-ubuntu2204-SSV5"
+    displayName: Deploy to PROD
+    dependsOn: DeployToPRE2
+    variables:
+      azureSubscription: "AZR-BNG-PRD1"
+      POSTGRES_BNG_CLIENT_ID: e736f7fe-5ee8-4611-b6c2-a3f8b444ad76 #update as per environment
+      POSTGRES_HOST: prdbngdbssq1401.postgres.database.azure.com
+      POSTGRES_USER: AG-Azure-BNG-PRD1-DBAdmin@prdbngdbssq1401
+    jobs:
+      - deployment: DeployPortalFunctionApp
+        displayName: Deploy Portal Function & web App
+        environment: PRD1
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: downgrade-database.yaml@self
+                  parameters:
+                    azureSubscription: $(azureSubscription)
+                    feedName: $(feedName)
+                    pacakgeName: $(pacakgeName)
+                    packageversion: "${{ parameters.version }}"
+                    databasepacakgeName: $(databasepacakgeName)
+                    POSTGRES_SSL_MODE: $(POSTGRES_SSL_MODE)
+                    POSTGRES_BNG_CLIENT_ID: $(POSTGRES_BNG_CLIENT_ID)
+                    POSTGRES_HOST: $(POSTGRES_HOST)
+                    POSTGRES_USER: $(POSTGRES_USER)
+                    POSTGRES_DATABASE: $(POSTGRES_DATABASE)
+                    POSTGRES_PORT: $(POSTGRES_PORT)

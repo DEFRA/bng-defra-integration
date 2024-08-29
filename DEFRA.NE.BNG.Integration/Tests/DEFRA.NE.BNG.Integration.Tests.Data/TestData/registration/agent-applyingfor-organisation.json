@@ -1,0 +1,132 @@
+﻿{
+  "landownerGainSiteRegistration": {
+    "applicant": {
+      "id": "123456",
+      "role": "agent"
+    },
+    "habitats": {
+      "baseline": [
+        {
+          "habitatType": "Grassland - Bracken",
+          "baselineReference": "1",
+          "module": "Baseline",
+          "state": "Habitat",
+          "condition": "Condition Assessment N/A",
+          "area": {
+            "beforeEnhancement": 3,
+            "afterEnhancement": 3
+          },
+          "measurementUnits": "hectares"
+        }
+      ],
+      "proposed": [
+        {
+          "habitatType": "Grassland - Floodplain wetland mosaic and CFGM",
+          "baselineReference": "1",
+          "module": "Enhanced",
+          "state": "Habitat",
+          "condition": "Poor",
+          "strategicSignificance": "Area/compensation not in local strategy/ no local strategy",
+          "advanceCreation": 0,
+          "delayedCreation": 0,
+          "area": 3,
+          "measurementUnits": "hectares"
+        }
+      ]
+    },
+    "files": [
+      {
+        "fileName": "Proof of land ownership.docx",
+        "fileLocation": "c767311a-d798-492e-85f3-98ab805a8a80/land-ownership/Proof of land ownership.docx",
+        "fileSize": 12630,
+        "fileType": "land-ownership",
+        "contentMediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "optional": false
+      },
+      {
+        "contentMediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "fileType": "legal-agreement",
+        "fileSize": 12038,
+        "fileLocation": "c767311a-d798-492e-85f3-98ab805a8a80/legal-agreement/Planning obligation (section 106 agreement).docx",
+        "fileName": "Planning obligation (section 106 agreement).docx",
+        "optional": false
+      },
+      {
+        "contentMediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "fileType": "land-boundary",
+        "fileSize": 12639,
+        "fileLocation": "c767311a-d798-492e-85f3-98ab805a8a80/land-boundary/Biodiversity gain site boundary.docx",
+        "fileName": "Biodiversity gain site boundary.docx",
+        "optional": false
+      },
+      {
+        "contentMediaType": "application/vnd.ms-excel.sheet.macroEnabled.12",
+        "fileType": "metric",
+        "fileSize": 5130630,
+        "fileLocation": "c767311a-d798-492e-85f3-98ab805a8a80/metric-upload/1311 The Statutory Biodiversity Metric Calculation Tool Offsite only.xlsm",
+        "fileName": "1311 The Statutory Biodiversity Metric Calculation Tool Offsite only.xlsm",
+        "optional": false
+      },
+      {
+        "contentMediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "fileType": "local-land-charge",
+        "fileSize": 12644,
+        "fileLocation": "c767311a-d798-492e-85f3-98ab805a8a80/local-land-charge/Local land charge search certificate.docx",
+        "fileName": "Local land charge search certificate.docx",
+        "optional": false
+      },
+      {
+        "contentMediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "fileType": "written-authorisation",
+        "fileSize": 12039,
+        "fileLocation": "c767311a-d798-492e-85f3-98ab805a8a80/written-authorisation/Written authorisation to apply.docx",
+        "fileName": "Written authorisation to apply.docx",
+        "optional": false
+      }
+    ],
+    "gainSiteReference": "BNGREG-DIK6H-A61OU",
+    "landBoundaryGridReference": "SE170441",
+    "landBoundaryHectares": 9,
+    "legalAgreementType": "759150000",
+    "enhancementWorkStartDate": null,
+    "legalAgreementEndDate": null,
+    "habitatPlanIncludedLegalAgreementYesNo": "Yes",
+    "landowners": {
+      "organisation": [],
+      "individual": [
+        {
+          "firstName": "Emma",
+          "middleNames": "",
+          "lastName": "Dexter",
+          "email": "test@gmail.com"
+        }
+      ]
+    },
+    "planningObligationLPAs": [
+      {
+        "LPAName": "Blackpool LPA",
+        "LPAId": "E60000014"
+      }
+    ],
+    "submittedOn": "2024-02-09T13:08:40.489Z",
+    "payment": {
+      "reference": "BNGREG-DIK6H-A61OU",
+      "method": "BACS"
+    },
+    "agent": {
+      "clientType": "organisation",
+      "clientAddress": {
+        "type": "uk",
+        "line1": "Street no 2",
+        "line2": "line2",
+        "line3": "line3",
+        "town": "London",
+        "postcode": "SE1 1AA",
+        "county": "Lambeth"
+      },
+      "clientNameOrganisation": "Top Stars2",
+      "clientEmail": "test1@topstar.com",
+      "clientPhoneNumber": "6754329876"
+    }
+  }
+}

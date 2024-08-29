@@ -1,0 +1,18 @@
+{
+  "bngSharePointUrl": {
+    "type": "String",
+    "value": "https://defradev.sharepoint.com/sites/WorkDelivery115UAT"
+  },
+  "publicRegisterBlobStorage": {
+    "type": "String",
+    "value": "devbnginfsa1402"
+  },
+  "sharepointonline-RuntimeUrl": {
+    "type": "String",
+    "value": "https://b9a46eadb2fd89ad.17.common.logic-uksouth.azure-apihub.net/apim/sharepointonline/6d92e1d2e3b946e296da9c99790ed9d2/"
+  },
+  "azureBlob-RuntimeUrl": {
+    "type": "String",
+    "value": "https://b3767fe1-5124-4904-9d57-018ae27a045d.17.common.logic-uksouth.azure-apihub.net/apim/azureblob/b3767fe1-5124-4904-9d57-018ae27a045d/"
+  }
+}

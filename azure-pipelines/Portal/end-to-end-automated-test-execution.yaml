@@ -1,0 +1,164 @@
+parameters:
+  - name: version
+    displayName: "ADO Artifect Pacakge version"
+    type: string
+    default: "*"
+
+trigger: none
+
+pool: "DEFRA-COMMON-ubuntu2204-SSV3"
+
+variables:
+- group: BuildPipelineCommonVariable
+
+stages:
+  # - stage: TestExecution_Development
+  #   displayName: Executing Automated Test in Dev Environment
+  #   variables:
+  #   - group: BuildPipelineCommonVariable
+  #   - name: webAppName   
+  #     value: "DEVBNGWEBWA1401"
+  #   - name: gitTestRootName   
+  #     value: biodiversity-net-gain-service-acceptance-tests
+  #   - name: gitCloneURL   
+  #     value: "https://github.com/DEFRA/$(gitTestRootName)"
+  #   - name: serviceURL   
+  #     value: https://${{ lower(variables.webAppName) }}.azurewebsites.net
+   
+    # jobs:
+      # - deployment: AutomatedTestExecution
+      #   displayName: Automated Test Execution
+      #   environment: TSTAutomation
+      #   strategy:
+      #     runOnce:
+      #       deploy:
+      #         steps:
+      #           - template: automatedTesting-regression-portal.yaml@self
+      #             parameters:
+      #               gitTestRootName: $(gitTestRootName)
+      #               gitCloneURL: $(gitCloneURL)
+      #               serviceURL: $(serviceURL)
+      #               uiTestUserId: $(uiTestUserId)
+      #               uiTestPassword: $(uiTestPassword)
+
+  - stage: TestExecution_Test
+    displayName: Executing Automated Test in Test Environment
+    variables:
+      webAppName: "TSTBNGWEBWA1401"
+      gitTestRootName: biodiversity-net-gain-service-acceptance-tests
+      gitCloneURL: "https://github.com/DEFRA/$(gitTestRootName)"
+      serviceURL: https://${{ lower(variables.webAppName) }}.azurewebsites.net
+    jobs:
+      - deployment: AutomatedTestExecution
+        displayName: Automated Test Execution
+        environment: TSTAutomation
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: automatedTesting-regression-portal.yaml@self
+                  parameters:
+                    gitTestRootName: $(gitTestRootName)
+                    gitCloneURL: $(gitCloneURL)
+                    serviceURL: $(serviceURL)
+                    uiTestUserId: $(uiTestUserId)
+                    uiTestPassword: $(uiTestPassword)
+
+
+  # - stage: TestExecution_TST2
+  #   displayName: Executing Automated Test in SIT Environment
+  #   dependsOn: TestExecution_Test
+  #   variables:
+  #     webAppName: "TSTBNGWEBWA2401"
+  #     gitTestRootName: biodiversity-net-gain-service-acceptance-tests
+  #     gitCloneURL: "https://github.com/DEFRA/$(gitTestRootName)"
+  #     serviceURL: https://${{ lower(variables.webAppName) }}.azurewebsites.net
+  #   jobs:
+  #     - deployment: AutomatedTestExecution
+  #       displayName: Automated Test Execution
+  #       environment: TSTAutomation
+  #       strategy:
+  #         runOnce:
+  #           deploy:
+  #             steps:
+  #               - template: automatedTesting-regression-portal.yaml@self
+  #                 parameters:
+  #                   gitTestRootName: $(gitTestRootName)
+  #                   gitCloneURL: $(gitCloneURL)
+  #                   serviceURL: $(serviceURL)
+  #                   uiTestUserId: $(uiTestUserId)
+  #                   uiTestPassword: $(uiTestPassword)
+
+  # - stage: TestExecution_TST4
+  #   displayName: Executing Automated Test in SIT Environment
+  #   dependsOn: TestExecution_Test
+  #   variables:
+  #     webAppName: "TSTBNGWEBWA4401"
+  #     gitTestRootName: biodiversity-net-gain-service-acceptance-tests
+  #     gitCloneURL: "https://github.com/DEFRA/$(gitTestRootName)"
+  #     serviceURL: https://${{ lower(variables.webAppName) }}.azurewebsites.net
+  #   jobs:
+  #     - deployment: AutomatedTestExecution
+  #       displayName: Automated Test Execution
+  #       environment: TSTAutomation
+  #       strategy:
+  #         runOnce:
+  #           deploy:
+  #             steps:
+  #               - template: automatedTesting-regression-portal.yaml@self
+  #                 parameters:
+  #                   gitTestRootName: $(gitTestRootName)
+  #                   gitCloneURL: $(gitCloneURL)
+  #                   serviceURL: $(serviceURL)
+  #                   uiTestUserId: $(uiTestUserId)
+  #                   uiTestPassword: $(uiTestPassword)
+
+  # - stage: TestExecution_PRE1
+  #   pool: "DEFRA-COMMON-ubuntu2204-SSV5"
+  #   displayName: Executing Automated Test in UAT Environment
+  #   dependsOn: TestExecution_Test
+  #   variables:
+  #     webAppName: "PREBNGWEBWA1401"
+  #     gitTestRootName: biodiversity-net-gain-service-acceptance-tests
+  #     gitCloneURL: "https://github.com/DEFRA/$(gitTestRootName)"
+  #     serviceURL: https://${{ lower(variables.webAppName) }}.azurewebsites.net
+  #   jobs:
+  #     - deployment: AutomatedTestExecution
+  #       displayName: Automated Test Execution
+  #       environment: TSTAutomation
+  #       strategy:
+  #         runOnce:
+  #           deploy:
+  #             steps:
+  #               - template: automatedTesting-regression-portal.yaml@self
+  #                 parameters:
+  #                   gitTestRootName: $(gitTestRootName)
+  #                   gitCloneURL: $(gitCloneURL)
+  #                   serviceURL: $(serviceURL)
+  #                   uiTestUserId: $(uiTestUserId)
+  #                   uiTestPassword: $(uiTestPassword)
+
+  # - stage: TestExecution_PRE2
+    # pool: "DEFRA-COMMON-ubuntu2204-SSV5"
+    # displayName: Executing Automated Test in Pre-Prod Environment
+    # dependsOn: TestExecution_TST2
+    # variables:
+    #   webAppName: "PREBNGWEBWA2401"
+    #   gitTestRootName: biodiversity-net-gain-service-acceptance-tests
+    #   gitCloneURL: "https://github.com/DEFRA/$(gitTestRootName)"
+    #   serviceURL: https://${{ lower(variables.webAppName) }}.azurewebsites.net
+    # jobs:
+    #   - deployment: AutomatedTestExecution
+    #     displayName: Automated Test Execution
+    #     environment: TSTAutomation
+    #     strategy:
+    #       runOnce:
+    #         deploy:
+    #           steps:
+    #             - template: automatedTesting-regression-portal.yaml@self
+    #               parameters:
+    #                 gitTestRootName: $(gitTestRootName)
+    #                 gitCloneURL: $(gitCloneURL)
+    #                 serviceURL: $(serviceURL)
+    #                 uiTestUserId: $(uiTestUserId)
+    #                 uiTestPassword: $(uiTestPassword)

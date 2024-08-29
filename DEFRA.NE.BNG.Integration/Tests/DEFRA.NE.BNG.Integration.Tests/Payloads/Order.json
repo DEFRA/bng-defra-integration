@@ -1,0 +1,41 @@
+{
+  "creditsPurchase": {
+    "applicant": {
+      "id": "0F285F52-40EB-45B8-BC5F-93BD600B6F81",
+      "nationality": "British",
+      "dateOfBirth": "1990-01-15"
+    },
+    "organisation": {
+      "type": "Company",
+      "id": "DE3CB891-D539-4E28-BDD7-B0ACCD14E940"
+    },
+    "development": {
+      "localPlanningAuthority": {
+        "code": "E60000090",
+        "name": "North West Leicestershire LPA"
+      },
+      "planningReference": "PLN007Rite",
+      "name": "Green Meadow Project"
+    },
+    "purchaseOrderNumber": "PO25102023_2",
+    "products": [
+      {
+        "code": "2ABC123",
+        "qty": 10
+      },
+      {
+        "code": "2DEF456",
+        "qty": 5
+      }
+    ],
+    "files": [
+      {
+        "contentMediaType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "fileType": "metric",
+        "fileSize": "0.04",
+        "fileLocation": "b38d60d1-8550-4cd8-aab6-01683a1a4cdf/metric/metric.xlsx",
+        "fileName": "metric.xlsx"
+      }
+    ]
+  }
+}

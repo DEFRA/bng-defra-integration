@@ -1,0 +1,108 @@
+name: "Operator Integration PR Build $(Build.BuildId)_$(Date:yyyyMMdd)$(Rev:r)"
+
+resources:
+  repositories:
+    - repository: BNGIntegration
+      name: Defra-NE-BNG/Defra.NE.BNG.Integration
+      type: git
+
+trigger: none
+
+pool:
+  vmImage: "windows-latest"
+
+variables:
+  azureSubscription: "AZD-BNG-DEV1"
+  productName: "bng"
+  environmentName: "dev"
+  zipFileName: "bngintegration.zip"
+  project: "**/DEFRA.NE.BNG.Integration.Function.csproj"
+  logicappszipFileName: "bnglogicapps.zip"
+  logicappsproject: "**/DEFRA.NE.BNG.Integration.LogicApps.csproj"
+  logicAppsProductName: "bng_logicapps"
+  buildConfiguration: "Release"
+  SonarConnection: "BNG-OperatorSonarCloud"
+  sonarOrganization: "defra"
+  sonarProjectKey: "defra-ne-bng-integration"
+  sonarProjectName: "Defra.NE.BNG.Integration"
+
+stages:
+  - stage: Build
+    displayName: Build
+    jobs:
+      - template: build-common.yaml
+        parameters:
+          includeazurefunctions: true
+          includelogicapps: true
+
+  - stage: DeployToDevelopment
+    pool: "DEFRA-COMMON-ubuntu2204-SSV3"
+    displayName: Deploy to Development
+    dependsOn: Build
+    variables:
+      azureSubscription: "AZD-BNG-DEV1"
+      resourceGroupName: "DEVBNGINFRG1401"
+      integrationfuncapp: "DEVBNGWEBFA1402"
+      integrationlogicapps: "DEVBNGWEBAF1402"
+    jobs:
+      - deployment: DeployFunctionApp
+        displayName: Deploy Function App
+        environment: DEV1
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: functionapp-code-deployment.yaml@self
+                  parameters:
+                    azureSubscription: $(azureSubscription)
+                    resourceGroupName: $(resourceGroupName)
+                    appName: $(integrationfuncapp)
+                    productName: $(productName)
+                    zipFileName: $(zipFileName)
+                    appType: "functionApp"
+
+                - template: functionapp-code-deployment.yaml@self
+                  parameters:
+                    azureSubscription: $(azureSubscription)
+                    resourceGroupName: $(resourceGroupName)
+                    appName: $(integrationlogicapps)
+                    productName: $(logicAppsProductName)
+                    zipFileName: $(logicappszipFileName)
+                    appType: "functionApp"
+                    operationName: "Deploy Logic App"
+
+  - stage: DeployToTest
+    pool: "DEFRA-COMMON-ubuntu2204-SSV3"
+    displayName: Deploy to Test
+    dependsOn: DeployToDevelopment
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    variables:
+      azureSubscription: "AZD-BNG-TST1"
+      resourceGroupName: "TSTBNGINFRG1401"
+      integrationfuncapp: "TSTBNGWEBFA1402"
+      integrationlogicapps: "TSTBNGWEBAF1402"
+    jobs:
+      - deployment: DeployFunctionApp
+        displayName: Deploy Function App
+        environment: TST1
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: functionapp-code-deployment.yaml@self
+                  parameters:
+                    azureSubscription: $(azureSubscription)
+                    resourceGroupName: $(resourceGroupName)
+                    appName: $(integrationfuncapp)
+                    productName: $(productName)
+                    zipFileName: $(zipFileName)
+                    appType: "functionApp"
+
+                - template: functionapp-code-deployment.yaml@self
+                  parameters:
+                    azureSubscription: $(azureSubscription)
+                    resourceGroupName: $(resourceGroupName)
+                    appName: $(integrationlogicapps)
+                    productName: $(logicAppsProductName)
+                    zipFileName: $(logicappszipFileName)
+                    appType: "functionApp"

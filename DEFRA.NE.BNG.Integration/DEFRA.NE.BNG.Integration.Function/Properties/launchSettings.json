@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "DEFRA.NE.BNG.Integration.Function": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7131",
+      "launchBrowser": false
+    }
+  }
+}

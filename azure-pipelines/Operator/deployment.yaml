@@ -1,0 +1,214 @@
+name: "Operator Integration Function App Build $(Build.BuildId)_$(Date:yyyyMMdd)$(Rev:r)"
+
+resources:
+  repositories:
+    - repository: BNGIntegration
+      name: Defra-NE-BNG/Defra.NE.BNG.Integration
+      type: git
+
+trigger: none
+
+pool:
+  vmImage: "windows-latest"
+
+variables:
+  azureSubscription: "AZD-BNG-DEV1"
+  productName: "bng"
+  environmentName: "dev"
+  zipFileName: "bngintegration.zip"
+  project: "**/DEFRA.NE.BNG.Integration.Function.csproj"
+  buildConfiguration: "Release"
+  SonarConnection: "BNG-OperatorSonarCloud"
+  sonarOrganization: "defra"
+  sonarProjectKey: "defra-ne-bng-integration"
+  sonarProjectName: "Defra.NE.BNG.Integration"
+
+stages:
+  - stage: Build
+    displayName: Build
+    jobs:
+      - template: build-common.yaml
+        parameters:
+          includeazurefunctions: true
+          includelogicapps: false
+
+  - stage: DeployToDevelopment
+    pool: "DEFRA-COMMON-ubuntu2204-SSV3"
+    displayName: Deploy to Development
+    dependsOn: Build
+    variables:
+      azureSubscription: "AZD-BNG-DEV1"
+      resourceGroupName: "DEVBNGINFRG1401"
+      integrationfuncapp: "DEVBNGWEBFA1402"
+    jobs:
+      - deployment: DeployFunctionApp
+        displayName: Deploy Function App
+        environment: DEV1
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: functionapp-code-deployment.yaml@self
+                  parameters:
+                    azureSubscription: $(azureSubscription)
+                    resourceGroupName: $(resourceGroupName)
+                    appName: $(integrationfuncapp)
+                    productName: $(productName)
+                    zipFileName: $(zipFileName)
+                    appType: "functionApp"
+
+  - stage: DeployToTest
+    pool: "DEFRA-COMMON-ubuntu2204-SSV3"
+    displayName: Deploy to Test
+    dependsOn: DeployToDevelopment
+    condition: or(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    variables:
+      azureSubscription: "AZD-BNG-TST1"
+      resourceGroupName: "TSTBNGINFRG1401"
+      integrationfuncapp: "TSTBNGWEBFA1402"
+    jobs:
+      - deployment: DeployFunctionApp
+        displayName: Deploy Function App
+        environment: TST1
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: functionapp-code-deployment.yaml@self
+                  parameters:
+                    azureSubscription: $(azureSubscription)
+                    resourceGroupName: $(resourceGroupName)
+                    appName: $(integrationfuncapp)
+                    productName: $(productName)
+                    zipFileName: $(zipFileName)
+                    appType: "functionApp"
+
+  - stage: DeployToTST2
+    pool: "DEFRA-COMMON-ubuntu2204-SSV3"
+    displayName: Deploy to TST2-SIT
+    dependsOn: DeployToTest
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    variables:
+      azureSubscription: "AZD-BNG-TST2"
+      resourceGroupName: "TSTBNGINFRG2401"
+      integrationfuncapp: "TSTBNGWEBFA2402"
+    jobs:
+      - deployment: DeployFunctionApp
+        displayName: Deploy Function App
+        environment: TST2
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: functionapp-code-deployment.yaml@self
+                  parameters:
+                    azureSubscription: $(azureSubscription)
+                    resourceGroupName: $(resourceGroupName)
+                    appName: $(integrationfuncapp)
+                    productName: $(productName)
+                    zipFileName: $(zipFileName)
+                    appType: "functionApp"
+
+  - stage: DeployToTST4
+    pool: "DEFRA-COMMON-ubuntu2204-SSV3"
+    displayName: Deploy to TST4
+    dependsOn: DeployToTest
+    condition: or(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    variables:
+      azureSubscription: "AZR-BNG-TST4"
+      resourceGroupName: "TSTBNGINFRG4401"
+      integrationfuncapp: "TSTBNGWEBFA4402"
+    jobs:
+      - deployment: DeployFunctionApp
+        displayName: Deploy Function App
+        environment: TST4
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: functionapp-code-deployment.yaml@self
+                  parameters:
+                    azureSubscription: $(azureSubscription)
+                    resourceGroupName: $(resourceGroupName)
+                    appName: $(integrationfuncapp)
+                    productName: $(productName)
+                    zipFileName: $(zipFileName)
+                    appType: "functionApp"
+
+  - stage: DeployToPRE1
+    pool: "DEFRA-COMMON-ubuntu2204-SSV5"
+    displayName: Deploy to PRE1-UAT
+    dependsOn: DeployToTest
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    variables:
+      azureSubscription: "AZR-BNG-PRE1"
+      resourceGroupName: "PREBNGINFRG1401"
+      integrationfuncapp: "PREBNGWEBFA1402"
+    jobs:
+      - deployment: DeployFunctionApp
+        displayName: Deploy Function App
+        environment: PRE1
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: functionapp-code-deployment.yaml@self
+                  parameters:
+                    azureSubscription: $(azureSubscription)
+                    resourceGroupName: $(resourceGroupName)
+                    appName: $(integrationfuncapp)
+                    productName: $(productName)
+                    zipFileName: $(zipFileName)
+                    appType: "functionApp"
+
+  - stage: DeployToPRE2
+    pool: "DEFRA-COMMON-ubuntu2204-SSV5"
+    displayName: Deploy to PRE2-PreProd
+    dependsOn: DeployToTST2
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    variables:
+      azureSubscription: "AZR-BNG-PRE2"
+      resourceGroupName: "PREBNGINFRG2401"
+      integrationfuncapp: "PREBNGWEBFA2402"
+    jobs:
+      - deployment: DeployFunctionApp
+        displayName: Deploy Function App
+        environment: PRE2
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: functionapp-code-deployment.yaml@self
+                  parameters:
+                    azureSubscription: $(azureSubscription)
+                    resourceGroupName: $(resourceGroupName)
+                    appName: $(integrationfuncapp)
+                    productName: $(productName)
+                    zipFileName: $(zipFileName)
+                    appType: "functionApp"
+
+  - stage: DeployToPRD
+    pool: "DEFRA-COMMON-ubuntu2204-SSV5"
+    displayName: Deploy to PROD
+    dependsOn: DeployToPRE2
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    variables:
+      azureSubscription: "AZR-BNG-PRD1"
+      resourceGroupName: "PRDBNGINFRG1401"
+      integrationfuncapp: "PRDBNGWEBFA1402"
+    jobs:
+      - deployment: DeployFunctionApp
+        displayName: Deploy Function App
+        environment: PRD1
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: functionapp-code-deployment.yaml@self
+                  parameters:
+                    azureSubscription: $(azureSubscription)
+                    resourceGroupName: $(resourceGroupName)
+                    appName: $(integrationfuncapp)
+                    productName: $(productName)
+                    zipFileName: $(zipFileName)
+                    appType: "functionApp"
